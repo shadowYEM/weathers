@@ -64,8 +64,8 @@ with col2:
     st.table(df)
 
 # Example usage of the get_forecast function
-city = "Riyadh"
-dates, temperatures = get_forecast(city, 1)
-plot_temperatures(dates, temperatures)
+# city = "Riyadh"
+# dates, temperatures = get_forecast(city, 1)
+# plot_temperatures(dates, temperatures)
 
 
