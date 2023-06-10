@@ -53,7 +53,7 @@ st.plotly_chart(fig)
 st.title("Weather Forecast")
 country2 = st.selectbox("Select a country:", list(arab_countries.keys()), key="country2")
 province2 = st.selectbox("Select a province:", arab_countries[country2], key="province2")
-days = st.slider("Select the number of days:", 1, 10, 1)
+days = st.slider("Select the number of days:", 1, 10, 2)
 
 dates, temperatures = get_forecast(province2, days)
 
