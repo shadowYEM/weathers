@@ -4,7 +4,7 @@ import requests
 import plotly.express as px
 
 
-api_key = "d189e6e5c1734d2e803221317230706"
+api_key = "5a4110f3bdff4af6918144642232109" # add your API Key
 base_url = "http://api.weatherapi.com/v1/"
 
 def get_weather(city: str):
