@@ -1,9 +1,21 @@
-# weathers
-This script retrieves current weather data and forecasts for a specific city using an API from [weatherapi.com](https://weatherapi.com).
+# Weathers
 
-The project contains 22 Arab countries, and you can add any country along with its respective cities to the `arab_countries` variable.
+This script utilizes the [weatherapi.com](https://weatherapi.com) API to retrieve current weather data and forecasts for a specific city.
 
+The project includes data for 22 Arab countries, and you can easily add more countries and their cities to the `arab_countries` variable.
 
-Note: You must change the API in line 7, specifically in the variable `api_key`.
+**Note:** Remember to update the API key in line 7, within the `api_key` variable.
 
-Project demo : https://weathers.streamlit.app/
+To see a live demo of the project, visit: [https://weathers.streamlit.app/](https://weathers.streamlit.app/)
+
+To run the project on your device:
+
+```https://github.com/shadowYEM/weathers.git```
+
+```cd weathers```
+
+```pip install -r requirements.txt```
+
+Finally, to run the project in the terminal, do the following:
+
+```streamlit run weathers.py```
