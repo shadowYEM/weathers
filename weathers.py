@@ -3,10 +3,12 @@ import pandas as pd
 import requests
 import plotly.express as px
 
-
-api_key = "5a4110f3bdff4af6918144642232109" # add your API Key
+# API key for weather API
+api_key = "5a4110f3bdff4af6918144642232109"
 base_url = "http://api.weatherapi.com/v1/"
+# Function to get current weather
 
+# Function to get current weather
 def get_weather(city: str):
     complete_url = f"{base_url}current.json?key={api_key}&q={city}"
     response = requests.get(complete_url)
@@ -16,7 +18,7 @@ def get_weather(city: str):
     description = data["current"]["condition"]["text"]
     return temperature, description
 
-
+# Function to get weather forecast
 def get_forecast(city: str, days: int):
     complete_url = f"{base_url}forecast.json?key={api_key}&q={city}&days={days}&hourly=1"
     response = requests.get(complete_url)
@@ -30,7 +32,7 @@ def get_forecast(city: str, days: int):
             temperatures.append(hour["temp_c"])
     return dates, temperatures
 
-
+# Dictionary of Arab countries and their provinces
 arab_countries = {
      "Yemen": ["Sana'a","'Adan","'Amran","Al Bayda'","Al Hudaydah","Al Jawf","Al Mahrah","Al Mahwit","Amanat al 'Asimah","Dhamar","Hadhramaut","Hajjah","Ibb","Lahij","Ma'rib","Raymah","Sa'dah","Sana'a (governorate)","Shabwah","Socotra Island","Ta'izz"],
     "Saudi Arabia": ["Riyadh","Jeddah", "'Asir", "Al Bahah", "Al Jawf", "Al Madinah al Munawwarah", "Al-Qassim", "Eastern Province", "Ha'il", "Jazan", "Makkah al Mukarramah", "Najran", "Northern Borders", "Tabuk"],
@@ -54,8 +56,10 @@ arab_countries = {
     "Palestine": ["Jerusalem", "Gaza", "Hebron", "Nablus", "Bethlehem", "Ramallah", "Jenin", "Tulkarm", "Qalqilya", "Beit Jala", "Beit Sahour", "Al-Bireh", "Khan Yunis", "Rafah", "Tubas", "Salfit"],
     "Djibouti": ["Djibouti", "Ali Sabieh", "Dikhil", "Tadjoura", "Obock", "Arta", "Holhol", "Dorra", "Galafi", "Loyada", "Balho", "Goubetto", "Mouloud", "Assa-Gueyla", "Goda", "Ali Adde", "Oued'Alimini", "Gulbaley", "Haramous", "Tewa"],
     "Mauritania": ["Nouakchott", "Nouadhibou", "Kiffa", "Zouerate", "Rosso", "Atar", "Tidjikja", "Kaédi", "Selibaby", "Aleg", "Akjoujt", "Boghé", "Bir Moghrein", "Boutilimit", "Timbedra", "Néma", "Tichit", "Ayoun El Atrous", "Aoujeft", "Guérou"],
+    # Add more countries and provinces here...
 }
 
+# Display current weather
 st.title("Current Weather")
 country1 = st.selectbox("Select a country:", list(arab_countries.keys()), key="country1")
 province1 = st.selectbox("Select a province:", arab_countries[country1], key="province1")
@@ -63,12 +67,12 @@ province1 = st.selectbox("Select a province:", arab_countries[country1], key="pr
 temperature, description = get_weather(province1)
 st.write(f"The current temperature in {province1} is {temperature}°C and the weather condition is {description}.")
 
-
+# Display weather forecast
 dates, temperatures = get_forecast(province1, 1)
 fig = px.line(x=dates, y=temperatures, labels={"x": "Time", "y": "Temperature (°C)"})
 st.plotly_chart(fig)
 
-
+# Display weather forecast
 st.title("Weather Forecast")
 country2 = st.selectbox("Select a country:", list(arab_countries.keys()), key="country2")
 province2 = st.selectbox("Select a province:", arab_countries[country2], key="province2")
@@ -85,9 +89,12 @@ st.plotly_chart(fig)
 # col1, col2, col3 = st.columns([1, 2, 1])
 # with col2:
 #     st.table(df)
+
+# Create a DataFrame from the forecast data
 data = {"Date": dates, "Temperature (°C)": temperatures}
 df = pd.DataFrame(data)
 
+# Display the forecast data in a table
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     st.dataframe(df)
