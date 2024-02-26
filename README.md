@@ -10,7 +10,8 @@ To see a live demo of the project, visit: [https://weathers.streamlit.app/](http
 
 To run the project on your device:
 
-```https://github.com/shadowYEM/weathers.git```
+Open the Terminal or Command Prompt. 
+```git clone https://github.com/shadowYEM/weathers.git```
 
 ```cd weathers```
 
