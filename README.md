@@ -21,3 +21,5 @@ Open the terminal or command window, then execute the following commands:
 Finally, to run the project in the terminal, do the following:
 
 ```streamlit run weathers.py```
+
+enjoy 😎
